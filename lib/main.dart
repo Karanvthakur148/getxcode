@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:getxcode/services/login_screen.dart';
+import 'package:getxcode/services/otp_screen.dart';
+import 'package:getxcode/services/services.dart';
 
-import 'loginpage.dart';
+import 'controller/otpcontroller.dart';
+import 'home_page.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main()async {
+  await GetStorage.init();
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  runApp(MyApp());}
 
-  // This widget is the root of your application.
+  class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const HomePage(),
-    );
+  home: Page1(),
+  locale: LocalizationService.locale,
+  fallbackLocale: LocalizationService.fallbackLocale,
+  translations: LocalizationService(),
+  );
   }
-}
-
+  }
