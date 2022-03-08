@@ -7,13 +7,16 @@ import '../services/otp_screen.dart';
 
 class Controller extends GetxController {
   var count = 0.obs;
-  final formKey = GlobalKey<FormState>();
+  final formKeyOtp = GlobalKey<FormState>();
+  final formKeyLogin = GlobalKey<FormState>();
+
+
   TextEditingController otpController = TextEditingController();
   TextEditingController mobileController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   onLogin() {
-    if (formKey.currentState!.validate()) {
+    if (formKeyLogin.currentState!.validate()) {
       Get.to(Page2());
 
       Get.snackbar(
@@ -55,7 +58,7 @@ class Controller extends GetxController {
   }
 
   void onSubmit() {
-    if (formKey.currentState!.validate()) {
+    if (formKeyOtp.currentState!.validate()) {
       Get.to(HomePage());
     }
   }

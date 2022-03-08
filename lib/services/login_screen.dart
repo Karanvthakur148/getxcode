@@ -11,7 +11,7 @@ class Page1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Form(key:controller.formKey ,
+        child: Form(key:controller.formKeyLogin ,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

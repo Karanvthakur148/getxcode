@@ -10,7 +10,7 @@ class Page2 extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.find<Controller>();
     return Scaffold(
-      body: Form(key: controller.formKey,
+      body: Form(key: controller.formKeyOtp,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
