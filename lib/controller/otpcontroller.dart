@@ -6,6 +6,8 @@ import '../home_page.dart';
 import '../services/otp_screen.dart';
 
 class Controller extends GetxController {
+  String verificationid = "";
+
   var count = 0.obs;
   final formKeyOtp = GlobalKey<FormState>();
   final formKeyLogin = GlobalKey<FormState>();
@@ -15,23 +17,10 @@ class Controller extends GetxController {
   TextEditingController mobileController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  onLogin() {
-    if (formKeyLogin.currentState!.validate()) {
-      Get.to(Page2());
-
-      Get.snackbar(
-        "validate ",
-        "success fully log In",
-        colorText: Colors.black,
-        snackPosition: SnackPosition.BOTTOM,
-        duration: Duration(microseconds: 700),
-      );
-    }
-  }
 
 
   String? mobileValidator(String value) {
-    if (value.isEmpty || value.length != 10) {
+    if (value.isEmpty || value.length != 13) {
       return "Please enter valid number";
     } else {
       return null;

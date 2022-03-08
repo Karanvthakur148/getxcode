@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:getxcode/services/login_screen.dart';
-import 'package:getxcode/services/otp_screen.dart';
 import 'package:getxcode/services/services.dart';
-
-import 'controller/otpcontroller.dart';
-import 'home_page.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main()async {
+Future<void> main()async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await GetStorage.init();
 
   runApp(MyApp());}
