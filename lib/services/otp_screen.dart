@@ -46,8 +46,7 @@ class OtpScreenPage extends StatelessWidget {
             Center(
               // Obx technically isn't needed for this example because
               // Page2 builds after the value is updated
-              child: Obx(() => Text(
-                  "Please enter the OTP sent to ${controller.mobileController.value.text}")),
+              child:Text("Please enter the OTP sent to ${controller.mobileController.value.text}"),
             ),
             SizedBox(height: 20),
 
@@ -86,10 +85,8 @@ class OtpScreenPage extends StatelessWidget {
         smsCode: controller.otpController.text.toString());
     UserCredential user = await auth.signInWithCredential(phoneAuthCredential);
     if (user.user!.uid.isEmpty) {
-      print('Otp is wrong');
     } else {
-      Get.to(HomePage());
-      print('Otp is wrong');
+      Get.off(HomePage());
 
     }
   }

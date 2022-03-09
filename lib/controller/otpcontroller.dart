@@ -8,7 +8,7 @@ import '../services/otp_screen.dart';
 class Controller extends GetxController {
   String verificationid = "";
 
-  var count = 0.obs;
+  RxInt count = 0.obs;
   final formKeyOtp = GlobalKey<FormState>();
   final formKeyLogin = GlobalKey<FormState>();
 

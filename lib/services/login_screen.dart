@@ -111,7 +111,7 @@ class Page1 extends StatelessWidget {
         },
         codeSent: (String verificationid, int? resendToken) async {
           controller.verificationid = verificationid;
-          Get.to(OtpScreenPage());
+          Get.off(OtpScreenPage());
         },
         codeAutoRetrievalTimeout: (String verificationid) {});
   }
