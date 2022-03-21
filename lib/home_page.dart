@@ -1,9 +1,8 @@
-
-
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:getxcode/services/login_screen.dart';
 import 'package:getxcode/services/services.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,13 +11,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final _auth = FirebaseAuth.instance;
   final String _selectedLang = LocalizationService.langs.first;
   final box = GetStorage();
 
   @override
   void initState() {
     // TODO: implement initState
-
+    super.initState();
     box.write('darkmode', "Karan");
   }
 
@@ -27,13 +27,23 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () async {
+                await _auth.signOut();
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LogInPage()));
+              },
+              icon: const Icon(Icons.logout))
+        ],
+      ),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
             child: Column(
               children: [
-                SizedBox(height: 20,),
+                const SizedBox(height: 20),
                 Text('hello'.tr),
                 ElevatedButton(
                     onPressed: () {
@@ -51,10 +61,11 @@ class _HomePageState extends State<HomePage> {
                       name = box.read('darkmode');
                       setState(() {});
                     },
-                    child: Text("Change text")),
+                    child: const Text("Change text")),
                 ElevatedButton(
                   onPressed: () {
-                    Get.snackbar("dream", "dream comes true when you work hard");
+                    Get.snackbar(
+                        "dream", "dream comes true when you work hard");
                   },
                   child: Text("Showsnackbar"),
                 ),
@@ -64,11 +75,19 @@ class _HomePageState extends State<HomePage> {
                         title: "dream comes true when you work hard");
                   },
                   child: Text("Diologbox"),
-                )
+                ),
               ],
             ),
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          await _auth.signOut();
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => LogInPage()));
+        },
+        child: const Icon(Icons.logout),
       ),
     );
   }

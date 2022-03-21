@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../home_page.dart';
-import '../services/otp_screen.dart';
 
 class Controller extends GetxController {
   String verificationid = "";
@@ -12,12 +11,9 @@ class Controller extends GetxController {
   final formKeyOtp = GlobalKey<FormState>();
   final formKeyLogin = GlobalKey<FormState>();
 
-
   TextEditingController otpController = TextEditingController();
   TextEditingController mobileController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
-
 
   String? mobileValidator(String value) {
     if (value.isEmpty || value.length != 13) {

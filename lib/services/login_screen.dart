@@ -5,7 +5,7 @@ import 'package:getxcode/services/otp_screen.dart';
 
 import '../controller/otpcontroller.dart';
 
-class Page1 extends StatelessWidget {
+class LogInPage extends StatelessWidget {
   final controller = Get.put(Controller());
   FirebaseAuth auth = FirebaseAuth.instance;
 
@@ -15,12 +15,18 @@ class Page1 extends StatelessWidget {
       body: Form(
         key: controller.formKeyLogin,
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Text(
-                       "Login",
-                       style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),),
-          SizedBox(height: 50,),
+          Text(
+            "Login",
+            style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(
+            height: 50,
+          ),
           Padding(
-            padding: const EdgeInsets.only(left: 35,right: 35,),
+            padding: const EdgeInsets.only(
+              left: 35,
+              right: 35,
+            ),
             child: TextFormField(
               validator: (value) => controller.mobileValidator(value!),
               controller: controller.mobileController,
@@ -33,11 +39,11 @@ class Page1 extends StatelessWidget {
           SizedBox(height: 20),
           TextButton(
               onPressed: () {
-                if(controller.formKeyLogin.currentState!.validate()) {
+                if (controller.formKeyLogin.currentState!.validate()) {
                   fetchOtp();
                 }
               },
-              child: Text('Fetch OTP')),
+              child: Text('Send OTP')),
         ]),
       ),
       // body: Center(
